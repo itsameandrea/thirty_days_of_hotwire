@@ -1,3 +1,7 @@
+FavouriteTechnology.destroy_all
+Technology.destroy_all
+User.destroy_all
+
 web_dev_technologies = [
   'HTML',
   'CSS',
@@ -23,4 +27,16 @@ web_dev_technologies = [
 
 web_dev_technologies.each do |tech_name|
   Technology.create(name: tech_name)
+end
+
+usernames = ['lukeskywalker', 'princessleia', 'hansolo', 'chewbacca', 'obiwan']
+
+usernames.each do |username|
+  email = username + '@rebels.com'
+  User.create!(
+    email: email,
+    username: username,
+    password: "password",
+    password_confirmation: "password"
+  )
 end

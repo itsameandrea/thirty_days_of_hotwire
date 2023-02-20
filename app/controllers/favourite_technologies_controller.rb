@@ -3,14 +3,14 @@ class FavouriteTechnologiesController < ApplicationController
     @favourite_technology = FavouriteTechnology.new(favourite_technology_params)
     
     if @favourite_technology.save
-      redirect_to root_path
+      redirect_to multiple_select_path
     end
   end
 
   def destroy
     @favourite_technology = FavouriteTechnology.find(params[:id])
     @favourite_technology.destroy
-    redirect_to root_path
+    redirect_to multiple_select_path
   end
 
   private

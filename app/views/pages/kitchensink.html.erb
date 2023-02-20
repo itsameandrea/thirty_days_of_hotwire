@@ -1,6 +1,7 @@
 <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20">
-  <!-- We've used 3xl here, but feel free to try other max-widths based on your needs -->
+  <%= render "shared/divider", title: "Day 1/30 - Multiple Select" %>
+
   <div class="mx-auto max-w-md">
-    <%= render 'multiple_select' %>
+    <%= turbo_frame_tag "multiple_select", src: multiple_select_path %>
   </div>
 </div>

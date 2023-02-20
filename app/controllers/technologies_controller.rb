@@ -3,7 +3,7 @@ class TechnologiesController < ApplicationController
     @technology = Technology.new(technology_params)
     
     if @technology.save
-      redirect_to root_path
+      redirect_to multiple_select_path
     end
   end
 

@@ -8,12 +8,6 @@
   <%= render "shared/divider", title: "Day 2/30 - Online users" %>
 
   <div class="mx-auto max-w-2xl my-20">
-    <%= turbo_stream_from "online_users", channel: OnlineChannel %>
-
-    <div id="online_users" class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-      <% @online_users.each do |user| %>
-        <%= render 'users/card', user: user %>
-      <% end %>
-    </div>
+    <%= turbo_frame_tag "online_users_frame", src: online_users_path %>
   </div>
 </div>

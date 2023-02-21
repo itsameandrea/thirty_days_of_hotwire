@@ -7,4 +7,8 @@ class PagesController < ApplicationController
     @technologies = Technology.search(params)
     @favourites = FavouriteTechnology.includes(:technology).all
   end
+
+  def online_users
+    @online_users = User.online
+  end
 end

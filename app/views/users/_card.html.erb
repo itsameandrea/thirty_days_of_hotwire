@@ -1,6 +1,8 @@
 <div
   id="<%= dom_id(user) %>"
-  class="relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400">
+  class="relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 animate__animated"
+  data-entering-class="animate__fadeInUp"
+  data-leaving-class="animate__fadeOutDown">
   <div class="flex-shrink-0">
     <%= image_tag "#{user.username}.jpeg", class: "h-10 w-10 rounded-full object-cover" %>
   </div>

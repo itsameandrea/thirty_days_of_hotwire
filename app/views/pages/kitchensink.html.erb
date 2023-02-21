@@ -1,7 +1,19 @@
 <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20">
   <%= render "shared/divider", title: "Day 1/30 - Multiple Select" %>
 
-  <div class="mx-auto max-w-md">
+  <div class="mx-auto max-w-md my-20">
     <%= turbo_frame_tag "multiple_select", src: multiple_select_path %>
+  </div>
+
+  <%= render "shared/divider", title: "Day 2/30 - Online users" %>
+
+  <div class="mx-auto max-w-2xl my-20">
+    <%= turbo_stream_from "online_users", channel: OnlineChannel %>
+
+    <div id="online_users" class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <% @online_users.each do |user| %>
+        <%= render 'users/card', user: user %>
+      <% end %>
+    </div>
   </div>
 </div>

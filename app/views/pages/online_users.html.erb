@@ -1,9 +1,10 @@
 <%= turbo_frame_tag "online_users_frame" do %>
   <%= turbo_stream_from "online_users", channel: OnlineChannel %>
   
-  <div id="online_users" class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+  <div id="online_users" class="grid grid-cols-1 gap-4 sm:grid-cols-2" data-controller="stream-animations">
     <% @online_users.each do |user| %>
       <%= render 'users/card', user: user %>
     <% end %>
   </div>
 <% end %>
+

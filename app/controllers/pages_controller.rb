@@ -11,4 +11,7 @@ class PagesController < ApplicationController
   def online_users
     @online_users = User.online
   end
+
+  def modal
+  end
 end

@@ -5,9 +5,15 @@
     <%= turbo_frame_tag "multiple_select", src: multiple_select_path %>
   </div>
 
-  <%= render "shared/divider", title: "Day 2/30 - Online users" %>
+  <%= render "shared/divider", title: "Day 2/30 - Online users and Day 3/30 Howtire animations" %>
 
   <div class="mx-auto max-w-2xl my-20">
     <%= turbo_frame_tag "online_users_frame", src: online_users_path %>
+  </div>
+  
+  <%= render "shared/divider", title: "Day 4/30 - JS-less modals" %>
+
+  <div class="mx-auto max-w-2xl my-20 flex items-center justify-center">
+    <%= link_to "Open Modal", modal_path, data: {turbo_frame: "modal"}, class: "bg-indigo-500 text-white rounded px-3 py-2" %>
   </div>
 </div>

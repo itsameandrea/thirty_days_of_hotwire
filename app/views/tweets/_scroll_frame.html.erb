@@ -1,0 +1,4 @@
+<%= turbo_frame_tag "infinite_scroll",
+  src: tweets_path(page: page, format: :turbo_stream), loading: :lazy %>
+
+  

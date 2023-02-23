@@ -16,4 +16,10 @@
   <div class="mx-auto max-w-2xl my-20 flex items-center justify-center">
     <%= link_to "Open Modal", modal_path, data: {turbo_frame: "modal"}, class: "bg-indigo-500 text-white rounded px-3 py-2" %>
   </div>
+
+  <%= render "shared/divider", title: "Day 5/30 - Infinite scroll" %>
+
+  <div class="mx-auto max-w-2xl my-20 flex items-center justify-center">
+    <%= link_to "Infinite Scroll", tweets_path, class: "bg-indigo-500 text-white rounded px-3 py-2" %>
+  </div>
 </div>

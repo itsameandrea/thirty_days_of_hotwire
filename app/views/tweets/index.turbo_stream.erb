@@ -1,0 +1,8 @@
+<%= turbo_stream.append "tweets", partial: "tweets/tweets", locals: { tweets: @tweets } %>
+ 
+<% if @pagy.next.present? %>
+  <%= turbo_stream.replace "infinite_scroll",
+    partial: "tweets/scroll_frame",
+    locals: { page: @pagy.next } %>
+<% end %>
+

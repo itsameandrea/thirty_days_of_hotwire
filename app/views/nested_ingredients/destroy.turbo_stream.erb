@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "ingredient_#{@id}",
+  partial: "recipes/ingredient_fields",
+  locals: { ingredient: @ingredient, destroy: true } %>

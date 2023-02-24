@@ -22,4 +22,10 @@
   <div class="mx-auto max-w-2xl my-20 flex items-center justify-center">
     <%= link_to "Infinite Scroll", tweets_path, class: "bg-indigo-500 text-white rounded px-3 py-2" %>
   </div>
+
+  <%= render "shared/divider", title: "Day 6/30 - Nested forms" %>
+
+  <div class="mx-auto my-20 flex items-center justify-center">
+    <%= turbo_frame_tag "recipes_table", src: recipes_path, class: "w-full" %>
+  </div>
 </div>

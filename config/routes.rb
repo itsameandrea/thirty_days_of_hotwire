@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
+  root 'pages#kitchensink'
+  
   resources :tweets
   devise_for :users
-  root 'pages#kitchensink'
   
   get 'multiple_select', to: 'pages#multiple_select'
   get 'online_users', to: 'pages#online_users'
@@ -9,4 +10,8 @@ Rails.application.routes.draw do
   
   resources :technologies, only: [:create]
   resources :favourite_technologies, only: [:create, :destroy]
+
+  resources :recipes, except: [:destroy]
+  resources :ingredients, only: [:destroy]
+  resources :nested_ingredients, only: [:new, :destroy]
 end

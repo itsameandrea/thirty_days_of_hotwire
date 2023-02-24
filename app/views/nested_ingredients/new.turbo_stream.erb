@@ -1,0 +1,5 @@
+<%= turbo_stream.append "ingredients",
+  partial: "recipes/ingredient_fields",
+  locals: { ingredient: @ingredient, allow_remove: true } %>
+
+  

@@ -9,3 +9,6 @@ application.register("autosubmit", AutosubmitController)
 
 import StreamAnimationsController from "./stream_animations_controller"
 application.register("stream-animations", StreamAnimationsController)
+
+import StreamsController from "./streams_controller"
+application.register("streams", StreamsController)

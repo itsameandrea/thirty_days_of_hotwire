@@ -28,4 +28,10 @@
   <div class="mx-auto my-20 flex items-center justify-center">
     <%= turbo_frame_tag "recipes_table", src: recipes_path, class: "w-full" %>
   </div>
+
+  <%= render "shared/divider", title: "Day 7/30 - Table filters" %>
+
+  <div class="mx-auto my-20 flex items-center justify-center">
+    <%= turbo_frame_tag "characters", src: characters_path, class: "w-full" %>
+  </div>
 </div>

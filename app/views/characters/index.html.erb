@@ -1,0 +1,137 @@
+<%= turbo_frame_tag "characters", class: "w-full" do %>
+  <div class="px-4 sm:px-6 lg:px-8 py-8">
+    <div class="sm:flex sm:items-center">
+      <div class="sm:flex-auto">
+        <h1 class="text-base font-semibold leading-6 text-gray-900">Star wars characters 🛸</h1>
+      </div>
+    </div>
+    
+    <div class="flex flex-col space-y-8 my-8">
+      <%= form_with url: characters_path,
+        method: :get,
+        class: 'flex space-x-10',
+        data: {controller: 'autosubmit', turbo_frame: 'characters_table'} do |f| %>
+        <div class="flex flex-col">
+          <div>
+            <%= f.text_field "name",
+              placeholder: "Search through the galaxy",
+              value: params[:name],
+              data: {action: "input->autosubmit#debouncedSubmit"},
+              class: "border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none w-[320px] focus:ring-orange focus:border-orange sm:text-sm" %>
+          </div>
+
+          <div class="flex space-x-5 mt-8">
+            <div class="relative" data-controller="dropdown">
+                <!-- Expand/collapse question button -->
+              <button data-action="click->dropdown#toggle click@window->dropdown#hide" data-dropdown-target="button" type="button" class="group inline-flex items-center justify-center text-sm font-medium text-gray-700 hover:text-gray-900" aria-controls="filter-section-1" aria-expanded="false">
+                <span class="font-medium text-gray-900 text-base"> Species </span>
+                <svg class="flex-shrink-0 -mr-1 ml-1 h-5 w-5 text-gray-400 group-hover:text-gray-500" x-description="Heroicon name: solid/chevron-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+              </button>
+              <div class="py-6 absolute left-0 max-h-64 overflow-auto mt-2 hidden bg-white z-200 min-w-full rounded-md shadow-2xl" data-dropdown-target="menu">
+                <div class="space-y-6 pl-4">
+                  <% @species.each do |specie| %>
+                    <label class="flex items-center justify-start mr-4 cursor-pointer">
+                      <%= f.check_box('species[]', {data: {action: 'autosubmit#submit' }}, checked: params[:species]&.include?(specie.to_s), class: 'h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500'}, specie, nil) %>
+                      <span class="ml-3 text-sm text-gray-700 flex-nowrap whitespace-nowrap" data-action="click->join-classes#checkAdjacentFilter click->auto-submit#submit"><%= specie.to_s.gsub('_', ' ').capitalize %></span>
+                    </label>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+
+            <div class="relative" data-controller="dropdown">
+                <!-- Expand/collapse question button -->
+              <button data-action="click->dropdown#toggle click@window->dropdown#hide" data-dropdown-target="button" type="button" class="group inline-flex items-center justify-center text-sm font-medium text-gray-700 hover:text-gray-900" aria-controls="filter-section-1" aria-expanded="false">
+                <span class="font-medium text-gray-900 text-base"> Home World </span>
+                <svg class="flex-shrink-0 -mr-1 ml-1 h-5 w-5 text-gray-400 group-hover:text-gray-500" x-description="Heroicon name: solid/chevron-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+              </button>
+              <div class="py-6 absolute left-0 max-h-64 overflow-auto mt-2 hidden bg-white z-200 min-w-full rounded-md shadow-2xl" data-dropdown-target="menu">
+                <div class="space-y-6 pl-4">
+                  <% @homeworlds.each do |homeworld| %>
+                    <label class="flex items-center justify-start mr-4 cursor-pointer">
+                      <%= f.check_box('homeworlds[]', {data: {action: 'autosubmit#submit', 'form-target': 'checkbox'}, checked: params[:homeworlds]&.include?(homeworld.to_s), class: 'h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500'}, homeworld, nil) %>
+                      <span class="ml-3 text-sm text-gray-700 flex-nowrap whitespace-nowrap" data-action="click->join-classes#checkAdjacentFilter click->auto-submit#submit"><%= homeworld.to_s.gsub('_', ' ').capitalize %></span>
+                    </label>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+
+            <div class="relative" data-controller="dropdown">
+              <!-- Expand/collapse question button -->
+              <button data-action="click->dropdown#toggle click@window->dropdown#hide" data-dropdown-target="button" type="button" class="group inline-flex items-center justify-center text-sm font-medium text-gray-700 hover:text-gray-900" aria-controls="filter-section-1" aria-expanded="false">
+                <span class="font-medium text-gray-900 text-base"> Affiliation </span>
+                <svg class="flex-shrink-0 -mr-1 ml-1 h-5 w-5 text-gray-400 group-hover:text-gray-500" x-description="Heroicon name: solid/chevron-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+              </button>
+              <div class="py-6 absolute left-0 max-h-64 overflow-auto mt-2 hidden bg-white z-200 min-w-full rounded-md shadow-2xl" data-dropdown-target="menu">
+                <div class="space-y-6 pl-4">
+                  <% @affiliations.each do |affiliation| %>
+                    <label class="flex items-center justify-start mr-4 cursor-pointer">
+                      <%= f.check_box('affiliations[]', {data: {action: 'autosubmit#submit', 'form-target': 'checkbox'}, checked: params[:affiliations]&.include?(affiliation.to_s), class: 'h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500'}, affiliation, nil) %>
+                      <span class="ml-3 text-sm text-gray-700 flex-nowrap whitespace-nowrap" data-action="click->join-classes#checkAdjacentFilter click->auto-submit#submit"><%= affiliation.to_s.gsub('_', ' ').capitalize %></span>
+                    </label>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+
+            <div class="relative flex items-center" data-controller="loading">
+              <%= link_to "Clear", characters_path, class: 'text-gray-500 text-xs', data: { turbo_frame: 'characters' } %>
+              <svg class="hidden absolute animate-spin -mr-6 right-0 h-3 w-3" data-form-target="spinner" data-loading-target="spinner" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <%= turbo_frame_tag "characters_table" do %>
+      <div class="flow-root">
+        <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+            <table class="min-w-full divide-y divide-gray-300">
+              <thead>
+                <tr>
+                  <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Image</th>
+                  <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Name</th>
+                  <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Species</th>
+                  <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Homeworld</th>
+                  <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Affiliation</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200">
+                <% @characters.each do |character| %>
+                  <tr>
+                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
+                      <img class="inline-block h-14 w-14 rounded-md object-cover" src="<%= character.image_url %>" alt="">
+                    </td>
+                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
+                      <%= character.name %>
+                    </td>
+                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
+                      <%= character.species %>
+                    </td>
+                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
+                      <%= character.homeworld %>
+                    </td>
+                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
+                      <%= character.affiliation %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

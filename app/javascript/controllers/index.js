@@ -12,3 +12,6 @@ application.register("stream-animations", StreamAnimationsController)
 
 import StreamsController from "./streams_controller"
 application.register("streams", StreamsController)
+
+import { Dropdown } from "tailwindcss-stimulus-components"
+application.register('dropdown', Dropdown)

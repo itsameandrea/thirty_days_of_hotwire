@@ -11,7 +11,12 @@ Rails.application.routes.draw do
   resources :technologies, only: [:create]
   resources :favourite_technologies, only: [:create, :destroy]
 
-  resources :recipes, except: [:destroy]
+  resources :recipes, except: [:destroy] do
+    scope module: :recipes do
+      resources :ingredients, only: :destroy
+    end
+  end
+
   resources :ingredients, only: [:destroy]
   resources :nested_ingredients, only: [:new, :destroy]
 end

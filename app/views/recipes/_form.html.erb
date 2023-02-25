@@ -1,8 +1,5 @@
 <%= form_with model: recipe do |form| %>
-  <div
-    class="shadow sm:overflow-hidden sm:rounded-md"
-    data-controller="streams"
-    data-streams-url-value="<%= new_nested_ingredient_path(format: :turbo_stream) %>">
+  <div class="shadow sm:overflow-hidden sm:rounded-md">
     <div class="space-y-6 bg-white px-4 py-5 sm:p-6">
       <div class="grid grid-cols-3 gap-6">
         <div class="col-span-3 sm:col-span-2">
@@ -13,33 +10,47 @@
         </div>
       </div>
 
-      <div class="relative">
-        <div class="absolute inset-0 flex items-center" aria-hidden="true">
-          <div class="w-full border-t border-gray-300"></div>
+      <div data-controller="template-manager">
+
+        <!-- Ingredients section-->
+        <div class="relative">
+          <div class="absolute inset-0 flex items-center" aria-hidden="true">
+            <div class="w-full border-t border-gray-300"></div>
+          </div>
+          <div class="relative flex justify-start">
+            <span class="bg-white pr-2 text-sm text-gray-500">Ingredients</span>
+          </div>
         </div>
-        <div class="relative flex justify-start">
-          <span class="bg-white pr-2 text-sm text-gray-500">Ingredients</span>
+        <!-- Ingredients template-->
+        <template data-template-manager-target="template">
+          <%= form.fields_for "ingredients_attributes", index: "replace_with_epoch" do |template_form| %>
+            <%= render "template_field", form: template_form %>
+          <% end %>
+        </template>
+
+        <!-- Ingredients list-->
+        <div id="ingredients" class="space-y-3" data-template-manager-target="container">
+          <%= form.fields_for :ingredients do |ingredients_form| %>
+            <%= render "ingredient_fields", form: ingredients_form, recipe: recipe %>
+          <% end %>
+        </div>
+
+        <!-- Ingredients: Add new-->
+        <div class="relative">
+          <div class="absolute inset-0 flex items-center" aria-hidden="true">
+            <div class="w-full border-t border-gray-300"></div>
+          </div>
+          <div class="relative flex justify-center">
+            <button type="button" class="bg-white px-2 text-gray-500"
+                    data-action="template-manager#append">
+              <svg class="h-5 w-5 text-gray-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
 
-      <div id="ingredients" class="space-y-3" data-streams-target="container">
-        <% recipe.ingredients.each do |ingredient| %>
-          <%= render "recipes/ingredient_fields", ingredient: ingredient %>
-        <% end %>
-      </div>
-
-      <div class="relative">
-        <div class="absolute inset-0 flex items-center" aria-hidden="true">
-          <div class="w-full border-t border-gray-300"></div>
-        </div>
-        <div class="relative flex justify-center">
-          <button type="button" class="bg-white px-2 text-gray-500" data-action="streams#getRequest">
-            <svg class="h-5 w-5 text-gray-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-              <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
-            </svg>
-          </button>
-        </div>
-      </div>
     </div>
     <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
       <button type="submit" class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Save</button>

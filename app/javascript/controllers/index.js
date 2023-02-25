@@ -13,8 +13,8 @@ application.register("stream-animations", StreamAnimationsController)
 import StreamsController from "./streams_controller"
 application.register("streams", StreamsController)
 
-import TemplateManager from "./template_manager_controller"
-application.register("template-manager", TemplateManager)
+import TurboStreamButton from "./turbo_stream_button_controller"
+application.register("turbo-stream-button", TurboStreamButton)
 
 import DynamicFormField from "./dynamic_form_field_controller"
 application.register("dynamic-form-field", DynamicFormField)

@@ -10,7 +10,6 @@
         </div>
       </div>
 
-      <div data-controller="template-manager">
 
         <!-- Ingredients section-->
         <div class="relative">
@@ -21,12 +20,6 @@
             <span class="bg-white pr-2 text-sm text-gray-500">Ingredients</span>
           </div>
         </div>
-        <!-- Ingredients template-->
-        <template data-template-manager-target="template">
-          <%= form.fields_for "ingredients_attributes", index: "replace_with_epoch" do |template_form| %>
-            <%= render "template_field", form: template_form %>
-          <% end %>
-        </template>
 
         <!-- Ingredients list-->
         <div id="ingredients" class="space-y-3" data-template-manager-target="container">
@@ -41,15 +34,22 @@
             <div class="w-full border-t border-gray-300"></div>
           </div>
           <div class="relative flex justify-center">
-            <button type="button" class="bg-white px-2 text-gray-500"
-                    data-action="template-manager#append">
+            <button type="button"
+                    class="bg-white px-2 text-gray-500"
+                    data-controller="turbo-stream-button"
+                    data-action="turbo-stream-button#evaluate">
               <svg class="h-5 w-5 text-gray-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                 <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
               </svg>
+              <!-- Ingredients template-->
+              <template data-turbo-stream-button-target="turboStreams">
+                <%= form.fields_for "ingredients_attributes", index: "replace_with_epoch" do |template_form| %>
+                  <%= render "template_field", form: template_form %>
+                <% end %>
+              </template>
             </button>
           </div>
         </div>
-      </div>
 
     </div>
     <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">

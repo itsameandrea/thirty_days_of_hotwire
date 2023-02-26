@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
+  has_many :messages, dependent: :destroy
+  
   def self.online
     ids = ActionCable.server.pubsub.redis_connection_for_subscriptions.smembers("online_users")
     where(id: ids)

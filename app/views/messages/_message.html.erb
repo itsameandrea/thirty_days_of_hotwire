@@ -1,0 +1,11 @@
+<div class="flex mt-2 space-x-3 w-full msg-for-<%= message.user.id %>">
+  <div class="chat-img flex-shrink-0 h-10 w-10 rounded-full bg-gray-300">
+  </div>
+  <div class="max-w-xs">
+    <div class="bg-gray-300 p-3 rounded-lg chat-bubble">
+      <strong class="text-sm"><%= message.user.username %></strong>
+      <p class="text-sm"><%= message.content %></p>
+    </div>
+    <span class="text-xs text-gray-500 leading-none"><%= time_ago_in_words(message.created_at) %></span>
+  </div>
+</div>

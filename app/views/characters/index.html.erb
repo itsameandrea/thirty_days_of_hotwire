@@ -33,7 +33,7 @@
                 <div class="space-y-6 pl-4">
                   <% @species.each do |specie| %>
                     <label class="flex items-center justify-start mr-4 cursor-pointer">
-                      <%= f.check_box('species[]', {data: {action: 'autosubmit#submit' }}, checked: params[:species]&.include?(specie.to_s), class: 'h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500'}, specie, nil) %>
+                      <%= f.check_box('species[]', {data: {action: 'autosubmit#submit' }, checked: params[:species]&.include?(specie.to_s), class: 'h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500'}, specie, nil) %>
                       <span class="ml-3 text-sm text-gray-700 flex-nowrap whitespace-nowrap" data-action="click->join-classes#checkAdjacentFilter click->auto-submit#submit"><%= specie.to_s.gsub('_', ' ').capitalize %></span>
                     </label>
                   <% end %>

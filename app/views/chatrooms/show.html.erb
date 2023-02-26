@@ -1,0 +1,36 @@
+<style>
+  <%= ".msg-for-#{current_user&.id}" %> {
+    display: flex;
+    justify-content: flex-end
+  }
+    
+  <%= ".msg-for-#{current_user&.id}" %> .chat-img {
+    order: 2;
+    margin-left: 10px;
+  }
+
+  <%= ".msg-for-#{current_user&.id}" %> .chat-bubble {
+    background-color: #5046E5 !important;
+    color: #fff !important;
+    padding: 10px;
+  }
+</style>
+
+<%= turbo_stream_from dom_id(@chatroom) %>
+
+<div class="flex flex-col flex-grow w-full bg-white shadow-xl rounded-lg overflow-hidden mx-auto h-screen">
+  <div id="messages" class="flex flex-col flex-grow h-0 p-4 overflow-auto bg-gray-100">
+    <% @chatroom.messages.each do |message| %>
+      <%= render "messages/message", message: message %>
+    <% end %>
+  </div>
+  
+  <div class="p-4">
+    <%= form_with model: @message,
+      url: chatroom_messages_path(@chatroom),
+      data: {controller: "form-reset", action: "turbo:submit-end->form-reset#reset"} do |f| %>
+      <%= f.rich_text_area :content %>
+      <%= f.submit "Send", class: "bg-indigo-600 px-3 py-1 rounded-md text-white float-right mt-10" %>
+    <% end %>
+  </div>
+</div>

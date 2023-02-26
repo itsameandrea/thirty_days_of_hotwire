@@ -7,6 +7,9 @@ import { application } from "./application"
 import AutosubmitController from "./autosubmit_controller"
 application.register("autosubmit", AutosubmitController)
 
+import FormResetController from "./form_reset_controller"
+application.register("form-reset", FormResetController)
+
 import StreamAnimationsController from "./stream_animations_controller"
 application.register("stream-animations", StreamAnimationsController)
 

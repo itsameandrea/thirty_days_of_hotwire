@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'tic_tac_toe_games/index'
+  get 'tic_tac_toe_games/show'
   get 'chatrooms/index'
   get 'chatrooms/show'
   root 'pages#kitchensink'
@@ -17,7 +19,12 @@ Rails.application.routes.draw do
   resources :ingredients, only: [:destroy]
   resources :nested_ingredients, only: [:new, :destroy]
   resources :characters, only: [:index]
+
   resources :chatrooms, only: [:index, :show] do 
     resources :messages, only: [:create]
+  end
+
+  resources :tic_tac_toe_games, only: [:index, :show, :create] do
+    resources :tic_tac_toe_moves, only: [:create], as: :moves
   end
 end

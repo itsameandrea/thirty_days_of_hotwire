@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_26_132326) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_27_113613) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -106,6 +106,24 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_26_132326) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tic_tac_toe_games", force: :cascade do |t|
+    t.string "winner_id"
+    t.boolean "draw"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tic_tac_toe_moves", force: :cascade do |t|
+    t.bigint "tic_tac_toe_game_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "move_number", default: 0
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tic_tac_toe_game_id"], name: "index_tic_tac_toe_moves_on_tic_tac_toe_game_id"
+    t.index ["user_id"], name: "index_tic_tac_toe_moves_on_user_id"
+  end
+
   create_table "tweets", force: :cascade do |t|
     t.string "content"
     t.string "handle"
@@ -133,4 +151,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_26_132326) do
   add_foreign_key "ingredients", "recipes"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "tic_tac_toe_moves", "tic_tac_toe_games"
+  add_foreign_key "tic_tac_toe_moves", "users"
 end

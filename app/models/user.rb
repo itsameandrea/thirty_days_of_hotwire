@@ -5,7 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_many :messages, dependent: :destroy
-  
+  has_many :tic_tac_toe_games, dependent: :destroy
+  has_many :tic_tac_toe_moves, dependent: :destroy
+
   def self.online
     ids = ActionCable.server.pubsub.redis_connection_for_subscriptions.smembers("online_users")
     where(id: ids)

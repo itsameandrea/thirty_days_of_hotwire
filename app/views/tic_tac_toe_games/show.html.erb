@@ -1,0 +1,30 @@
+<%= turbo_stream_from dom_id(@game) %>
+
+<section class="flex flex-col h-screen duration-700 p-6 bg-green-500 items-center" id="<%= dom_id(@game) %>">
+  <div class="flex max-w-xs mt-10">
+    <h1 class="text-3xl text-white">
+      <%= current_user.username %>
+      <%= symbol_for(player: current_user, game: @game) %>
+    </h1>
+  </div>
+
+  <div class="flex flex-col h-full justify-center content-center max-w-xs">
+    <div class="self-center">
+      <div class="grid grid-cols-3 gap-2">
+        <% (0..8).each do |position| %>
+          <div class="flex -mb-2">
+            <% if @game.has_move?(position: position) %>
+              <%= render "tic_tac_toe_moves/symbol_#{@game.symbol_for(@game.move_at(position: position).user)}" %>
+            <% else %>
+              <%= button_to "", tic_tac_toe_game_moves_path(@game, tic_tac_toe_move: { position: position }),
+                form: {id: "position_#{position}"},
+                class: "flex items-center justify-center w-20 mb-4 h-20 bg-transparent cursor-pointer border-white border-2 rounded-xl bg-white bg-opacity-0 hover:bg-opacity-25 duration-300" %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+
+

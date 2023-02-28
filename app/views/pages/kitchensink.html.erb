@@ -46,4 +46,10 @@
   <div class="mx-auto my-20 flex items-center justify-center">
     <%= turbo_frame_tag "games", src: tic_tac_toe_games_path, class: "w-full" %>
   </div>
+
+  <%= render "shared/divider", title: "Day 10/30 - Form Wizard" %>
+
+  <div class="mx-auto max-w-2xl my-20 flex items-center justify-center">
+    <%= turbo_frame_tag "onboarding_form", src: new_onboarding_developer_information_path, class: "w-full" %>
+  </div>
 </div>

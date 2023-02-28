@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'developers/new'
   get 'tic_tac_toe_games/index'
   get 'tic_tac_toe_games/show'
   get 'chatrooms/index'
@@ -27,4 +28,12 @@ Rails.application.routes.draw do
   resources :tic_tac_toe_games, only: [:index, :show, :create] do
     resources :tic_tac_toe_moves, only: [:create], as: :moves
   end
+
+  namespace :onboarding do
+    resources :developer_informations, only: %i[new create]
+    resources :developer_skills, only: %i[new create]
+    resources :developer_preferences, only: %i[new create]
+  end
+
+  resources :developers, only: %i[show]
 end

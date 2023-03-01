@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :recipes, except: [:destroy]
   resources :ingredients, only: [:destroy]
   resources :nested_ingredients, only: [:new, :destroy]
-  resources :characters, only: [:index]
+  resources :characters, only: [:index, :destroy]
 
   resources :chatrooms, only: [:index, :show] do 
     resources :messages, only: [:create]

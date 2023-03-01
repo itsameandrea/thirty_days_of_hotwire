@@ -7,6 +7,9 @@ import { application } from "./application"
 import AutosubmitController from "./autosubmit_controller"
 application.register("autosubmit", AutosubmitController)
 
+import FlashController from "./flash_controller"
+application.register("flash", FlashController)
+
 import FormResetController from "./form_reset_controller"
 application.register("form-reset", FormResetController)
 
@@ -15,6 +18,3 @@ application.register("stream-animations", StreamAnimationsController)
 
 import StreamsController from "./streams_controller"
 application.register("streams", StreamsController)
-
-import { Dropdown } from "tailwindcss-stimulus-components"
-application.register('dropdown', Dropdown)

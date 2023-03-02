@@ -1,6 +1,6 @@
-FavouriteTechnology.destroy_all
-Technology.destroy_all
-User.destroy_all
+# FavouriteTechnology.destroy_all
+# Technology.destroy_all
+# User.destroy_all
 
 # web_dev_technologies = [
 #   'HTML',
@@ -29,17 +29,17 @@ User.destroy_all
 #   Technology.create(name: tech_name)
 # end
 
-usernames = ['lukeskywalker', 'princessleia', 'hansolo', 'chewbacca', 'obiwan']
+# usernames = ['lukeskywalker', 'princessleia', 'hansolo', 'chewbacca', 'obiwan']
 
-usernames.each do |username|
-  email = username + '@rebels.com'
-  User.create!(
-    email: email,
-    username: username,
-    password: "password",
-    password_confirmation: "password"
-  )
-end
+# usernames.each do |username|
+#   email = username + '@rebels.com'
+#   User.create!(
+#     email: email,
+#     username: username,
+#     password: "password",
+#     password_confirmation: "password"
+#   )
+# end
 
 # 200.times do
 #   Tweet.create(
@@ -212,3 +212,11 @@ end
 #     image_url: "https://starwars-visualguide.com/assets/img/characters/92.jpg"
 #   }
 # ])
+
+commands = []
+
+30.times do
+  commands << { name: Faker::Hacker.verb }
+end
+
+Command.create(commands.uniq)

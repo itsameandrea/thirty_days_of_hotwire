@@ -7,6 +7,9 @@ import { application } from "./application"
 import AutosubmitController from "./autosubmit_controller"
 application.register("autosubmit", AutosubmitController)
 
+import CommandPaletteController from "./command_palette_controller"
+application.register("command-palette", CommandPaletteController)
+
 import FlashController from "./flash_controller"
 application.register("flash", FlashController)
 

@@ -1,0 +1,13 @@
+<%= turbo_frame_tag "commands" do %>
+  <% if @commands.any? && params[:query].present? %>
+    <ul class="max-h-72 scroll-py-2 overflow-y-auto py-2 text-sm text-gray-800" id="options" role="listbox">
+      <% @commands.each do |command| %>
+        <li class="cursor-default select-none px-4 py-2 active:bg-indigo-600 hover:bg-indigo-600 hover:text-white" id="option-1" role="option" tabindex="-1">
+          <%= command.name %>
+        </li>
+      <% end %>
+    </ul>
+  <% elsif params[:query].present? %>
+    <p class="p-4 text-sm text-gray-500">No commands found.</p>
+  <% end %>
+<% end %>

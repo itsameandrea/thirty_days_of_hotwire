@@ -36,4 +36,5 @@ Rails.application.routes.draw do
   end
 
   resources :developers, only: %i[show]
+  resources :commands, only: %i[index]
 end

@@ -16,6 +16,9 @@ application.register("flash", FlashController)
 import FormResetController from "./form_reset_controller"
 application.register("form-reset", FormResetController)
 
+import MapboxController from "./mapbox_controller"
+application.register("mapbox", MapboxController)
+
 import StreamAnimationsController from "./stream_animations_controller"
 application.register("stream-animations", StreamAnimationsController)
 

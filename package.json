@@ -10,6 +10,7 @@
     "autoprefixer": "^10.4.13",
     "debounce": "^1.2.1",
     "esbuild": "^0.17.8",
+    "mapbox-gl": "^2.13.0",
     "postcss": "^8.4.21",
     "tailwindcss": "^3.2.7",
     "tailwindcss-stimulus-components": "^3.0.4",

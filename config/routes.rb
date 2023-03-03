@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  get 'developers/new'
-  get 'tic_tac_toe_games/index'
-  get 'tic_tac_toe_games/show'
-  get 'chatrooms/index'
-  get 'chatrooms/show'
   root 'pages#kitchensink'
   
   resources :tweets
@@ -37,4 +32,5 @@ Rails.application.routes.draw do
 
   resources :developers, only: %i[show]
   resources :commands, only: %i[index]
+  resources :places, only: %i[index create]
 end

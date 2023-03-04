@@ -72,3 +72,5 @@ gem "faker", "~> 3.1"
 gem "pagy", "~> 6.0"
 
 gem "geocoder", "~> 1.8"
+
+gem "view_component"

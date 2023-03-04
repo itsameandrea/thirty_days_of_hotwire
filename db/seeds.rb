@@ -213,10 +213,17 @@
 #   }
 # ])
 
-commands = []
+# commands = []
 
-30.times do
-  commands << { name: Faker::Hacker.verb }
+# 30.times do
+#   commands << { name: Faker::Hacker.verb }
+# end
+
+# Command.create(commands.uniq)
+
+10.times do
+  Todo.create(
+    title: Faker::Book.title,
+    description: Faker::Lorem.paragraph
+  )
 end
-
-Command.create(commands.uniq)

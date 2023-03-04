@@ -1,0 +1,16 @@
+<%= turbo_frame_tag "todos" do %>
+  <div class="flex space-x-10 p-10" data-controller="stream-animations">
+    <%= render TodoListComponent.new(
+      title: "Books to read",
+      id: "incomplete_todos",
+      todos: @incomplete_todos
+    ) %>
+
+    <%= render TodoListComponent.new(
+      title: "Books I read",
+      id: "completed_todos",
+      todos: @completed_todos
+    ) %>
+  </div>
+
+<% end %>

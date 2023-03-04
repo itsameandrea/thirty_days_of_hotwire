@@ -1,0 +1,16 @@
+<div
+  id="<%= div_id %>"
+  class="relative flex items-start animate__animated"
+  data-entering-class="animate__fadeInUp"
+  data-leaving-class="animate__fadeOutDown">
+  <div class="flex h-6 items-center">
+    <%= form_with model: todo, method: :patch, data: {controller: "autosubmit"}, class: "flex h-6 items-center" do |f| %>
+      <%= f.check_box :completed, checked: todo.completed?, data: { action: "autosubmit#submit"}, class: "h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600" %>
+    <% end %>
+  </div>
+  <div class="ml-3">
+    <label for="comments" class="text-sm font-medium leading-6 text-gray-900"><%= todo.title %></label>
+    <p id="comments-description" class="text-sm text-gray-500"><%= todo.description %></p>
+  </div>
+</div>
+

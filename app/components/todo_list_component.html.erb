@@ -1,0 +1,8 @@
+<div>
+  <h1 class="text-xl font-bold mb-10"><%= title %></h1>
+
+  <div id="<%= id %>" class="max-w-2xl">
+    <%= render TodoComponent.with_collection(todos) %>
+  </div>
+</div>
+

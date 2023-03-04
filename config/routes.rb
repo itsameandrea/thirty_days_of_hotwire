@@ -33,4 +33,5 @@ Rails.application.routes.draw do
   resources :developers, only: %i[show]
   resources :commands, only: %i[index]
   resources :places, only: %i[index create]
+  resources :todos, only: %i[index update]
 end

@@ -1,0 +1,12 @@
+<% if @todo.completed? %>
+  <%= turbo_stream.remove "incomplete_#{dom_id(@todo)}" %>
+  <%= turbo_stream.append "completed_todos" do %>
+    <%= render TodoComponent.new(todo: @todo) %>
+  <% end %>
+<% else %>
+  <%= turbo_stream.remove "completed_#{dom_id(@todo)}" %>
+  <%= turbo_stream.append "incomplete_todos" do %>
+    <%= render TodoComponent.new(todo: @todo) %>
+  <% end %>
+<% end %>
+

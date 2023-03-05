@@ -13,4 +13,7 @@ class PagesController < ApplicationController
 
   def modal
   end
+
+  def coffeegpt
+  end
 end

@@ -74,3 +74,5 @@ gem "pagy", "~> 6.0"
 gem "geocoder", "~> 1.8"
 
 gem "view_component"
+
+gem "ruby-openai", "~> 3.5"

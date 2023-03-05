@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_04_132136) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_05_131239) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -71,6 +71,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_04_132136) do
 
   create_table "chatrooms", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "coffee_prompts", force: :cascade do |t|
+    t.string "brew_method"
+    t.integer "grams"
+    t.string "temperature"
+    t.string "roast_level"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

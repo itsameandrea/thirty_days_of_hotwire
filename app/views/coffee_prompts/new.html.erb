@@ -1,0 +1,59 @@
+<%= turbo_frame_tag "coffeegpt" do %>
+
+  <%= turbo_frame_tag "coffee_prompt" do %>
+    <%= form_with model: @coffee_prompt, class: "flex flex-col p-6" do |f| %>
+      <h2 class="text-2xl mb-6 font-bold">
+        How are you extracting your coffee?
+      </h2>
+      <ul class="grid w-full gap-6 md:grid-cols-3 mb-6">
+        <% CoffeePrompt.brew_methods.each do |key, label| %>
+          <li>
+            <%= f.radio_button :brew_method, key.to_sym, class: "hidden peer", required: true %>
+            <%= f.label :brew_method, value: key, class: "inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-900 dark:bg-gray-100 dark:hover:bg-gray-200" do %>
+              <div class="block">
+                <div class="w-full text-lg font-semibold"><%= label %></div>
+              </div>
+              <%= image_tag "#{label}.png", class:"w-6 h-6 ml-3" %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+
+      <h2 class="text-2xl mb-6 font-bold">
+        What roast level is your coffee?
+      </h2>
+      <ul class="grid w-full gap-6 md:grid-cols-3 mb-6">
+        <% CoffeePrompt.roast_levels.each do |key, label| %>
+          <li>
+            <%= f.radio_button :roast_level, key.to_sym, class: "hidden peer", required: true %>
+            <%= f.label :roast_level, value: key, class: "inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-900 dark:bg-gray-100 dark:hover:bg-gray-200" do %>
+              <div class="block">
+                <div class="w-full text-lg font-semibold"><%= label %></div>
+              </div>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+
+      <h2 class="text-2xl mb-6 font-bold">
+        Hot or iced?
+      </h2>
+      <ul class="grid w-full gap-6 md:grid-cols-3 mb-10">
+        <% CoffeePrompt.temperatures.each do |key, label| %>
+          <li>
+            <%= f.radio_button :temperature, key.to_sym, class: "hidden peer", required: true %>
+            <%= f.label :temperature, value: key, class: "inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-900 dark:bg-gray-100 dark:hover:bg-gray-200" do %>
+              <div class="block">
+                <div class="w-full text-lg font-semibold"><%= label %></div>
+              </div>
+              <%= image_tag "#{label}.png", class:"w-6 h-6 ml-3" %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+
+      <%= f.submit "Generate my recipe", class: "bg-indigo-600 hover:bg-indigo-700 p-3 rounded-lg text-white cursor-pointer" %>
+    <% end %>
+  <% end %>
+  
+<% end %>

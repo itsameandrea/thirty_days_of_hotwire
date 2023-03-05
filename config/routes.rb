@@ -34,4 +34,5 @@ Rails.application.routes.draw do
   resources :commands, only: %i[index]
   resources :places, only: %i[index create]
   resources :todos, only: %i[index update]
+  resources :coffee_prompts, only: %i[new create]
 end

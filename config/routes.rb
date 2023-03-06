@@ -35,4 +35,9 @@ Rails.application.routes.draw do
   resources :places, only: %i[index create]
   resources :todos, only: %i[index update]
   resources :coffee_prompts, only: %i[new create]
+
+  get 'tabs', to: 'pages#tabs'
+  get 'profile_tab', to: 'pages#profile_tab'
+  get 'personal_info_tab', to: 'pages#personal_info_tab'
+  get 'notifications_tab', to: 'pages#notifications_tab'
 end

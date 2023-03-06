@@ -82,6 +82,12 @@
   <div class="mx-auto my-20 flex items-center justify-center">
     <%= turbo_frame_tag "coffeegpt", src: new_coffee_prompt_path, class: "w-full" %>
   </div>
+
+  <%= render "shared/divider", title: "Day 16/30 - Tabbed content" %>
+
+  <div class="mx-auto my-20 flex items-center justify-center">
+    <%= turbo_frame_tag "tabs", src: tabs_path, class: "w-full" %>
+  </div>
 </div>
 
 

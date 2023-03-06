@@ -16,4 +16,16 @@ class PagesController < ApplicationController
 
   def coffeegpt
   end
+
+  def tabs
+  end
+
+  def profile_tab
+  end
+
+  def personal_info_tab
+  end
+
+  def notifications_tab
+  end
 end

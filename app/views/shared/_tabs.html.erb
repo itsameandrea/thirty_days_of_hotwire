@@ -1,0 +1,18 @@
+<div>
+  <div class="hidden sm:block">
+    <div class="border-b border-gray-200">
+      <nav class="-mb-px flex space-x-8" aria-label="Tabs">
+        <%= nav_link_to "Profile", profile_tab_path,
+          active_class: "border-indigo-500 text-indigo-600",
+          class: "whitespace-nowrap border-b-2 py-4 px-1 text-sm font-medium" %>
+        <%= nav_link_to "Personal Information", personal_info_tab_path,
+          active_class: "border-indigo-500 text-indigo-600",
+          class: "whitespace-nowrap border-b-2 py-4 px-1 text-sm font-medium" %>
+        <%= nav_link_to "Notifications", notifications_tab_path,
+          active_class: "border-indigo-500 text-indigo-600",
+          class: "whitespace-nowrap border-b-2 py-4 px-1 text-sm font-medium" %>
+      </nav>
+    </div>
+  </div>
+</div>
+

@@ -30,7 +30,7 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new(tweet_params)
 
     if @tweet.save
-      redirect_to @tweet, notice: "Tweet was successfully created."
+      redirect_to @tweet
     else
       render :new, status: :unprocessable_entity
     end
@@ -59,6 +59,6 @@ class TweetsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tweet_params
-      params.fetch(:tweet, {})
+      params.require(:tweet).permit(:content)
     end
 end

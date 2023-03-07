@@ -24,3 +24,6 @@ application.register("stream-animations", StreamAnimationsController)
 
 import StreamsController from "./streams_controller"
 application.register("streams", StreamsController)
+
+import UndoController from "./undo_controller"
+application.register("undo", UndoController)

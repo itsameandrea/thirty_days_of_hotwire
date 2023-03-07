@@ -7,5 +7,3 @@ module ApplicationHelper
     link_to text, path, options
   end
 end
-
-

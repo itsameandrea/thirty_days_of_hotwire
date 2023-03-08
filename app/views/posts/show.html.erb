@@ -1,0 +1,7 @@
+<%= turbo_frame_tag dom_id(@post) do %>
+  <div id="markdown" class="whitespace-pre-line leading-none">
+    <h1 class="text-2xl font-bold"><%= @post.title %></h1>
+    <%= @body.try(:html_safe) %>
+  </div>
+<% end %>
+

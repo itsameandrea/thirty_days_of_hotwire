@@ -40,4 +40,6 @@ Rails.application.routes.draw do
   get 'profile_tab', to: 'pages#profile_tab'
   get 'personal_info_tab', to: 'pages#personal_info_tab'
   get 'notifications_tab', to: 'pages#notifications_tab'
+
+  resources :posts, only: %i[new create edit update show]
 end

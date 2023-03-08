@@ -76,3 +76,5 @@ gem "geocoder", "~> 1.8"
 gem "view_component"
 
 gem "ruby-openai", "~> 3.5"
+
+gem "redcarpet", "~> 3.6"

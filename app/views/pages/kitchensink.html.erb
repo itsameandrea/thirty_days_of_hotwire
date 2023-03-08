@@ -94,6 +94,12 @@
   <div class="mx-auto my-20 flex items-center justify-center max-w-lg">
     <%= turbo_frame_tag "undo_tweet", src: new_tweet_path, class: "w-full" %>
   </div>
+
+  <%= render "shared/divider", title: "Day 18/30 - Markdown" %>
+
+  <div class="mx-auto my-20 flex items-center justify-center max-w-lg">
+    <%= turbo_frame_tag "markdown_preview", src: new_post_path, class: "w-full" %>
+  </div>
 </div>
 
 

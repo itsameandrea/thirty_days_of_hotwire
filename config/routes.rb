@@ -42,4 +42,5 @@ Rails.application.routes.draw do
   get 'notifications_tab', to: 'pages#notifications_tab'
 
   resources :posts, only: %i[new create edit update show]
+  resources :slow_characters, only: %i[index]
 end

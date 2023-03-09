@@ -1,0 +1,85 @@
+<div class="px-4 sm:px-6 lg:px-8 py-8">
+  <div class="sm:flex sm:items-center">
+    <div class="sm:flex-auto">
+      <h1 class="text-base font-semibold leading-6 text-gray-900">Star wars characters 🛸</h1>
+    </div>
+  </div>
+
+  <div class="flex flex-col space-y-8 my-8">
+    <form action="#" class="flex space-x-10">
+      <div class="flex flex-col">
+        <div>
+          <input type="text" placeholder="Search through the galaxy" class="border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none w-[320px] focus:ring-orange focus:border-orange sm:text-sm">
+        </div>
+
+        <div class="flex space-x-5 mt-8">
+          <div class="relative" data-controller="dropdown">
+              <!-- Expand/collapse question button -->
+            <button data-action="click->dropdown#toggle click@window->dropdown#hide" data-dropdown-target="button" type="button" class="group inline-flex items-center justify-center text-sm font-medium text-gray-700 hover:text-gray-900" aria-controls="filter-section-1" aria-expanded="false">
+              <span class="font-medium text-gray-900 text-base"> Species </span>
+              <svg class="flex-shrink-0 -mr-1 ml-1 h-5 w-5 text-gray-400 group-hover:text-gray-500" x-description="Heroicon name: solid/chevron-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+              </svg>
+            </button>
+          </div>
+
+          <div class="relative" data-controller="dropdown">
+              <!-- Expand/collapse question button -->
+            <button data-action="click->dropdown#toggle click@window->dropdown#hide" data-dropdown-target="button" type="button" class="group inline-flex items-center justify-center text-sm font-medium text-gray-700 hover:text-gray-900" aria-controls="filter-section-1" aria-expanded="false">
+              <span class="font-medium text-gray-900 text-base"> Home World </span>
+              <svg class="flex-shrink-0 -mr-1 ml-1 h-5 w-5 text-gray-400 group-hover:text-gray-500" x-description="Heroicon name: solid/chevron-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+              </svg>
+            </button>
+          </div>
+
+          <div class="relative" data-controller="dropdown">
+            <!-- Expand/collapse question button -->
+            <button data-action="click->dropdown#toggle click@window->dropdown#hide" data-dropdown-target="button" type="button" class="group inline-flex items-center justify-center text-sm font-medium text-gray-700 hover:text-gray-900" aria-controls="filter-section-1" aria-expanded="false">
+              <span class="font-medium text-gray-900 text-base"> Affiliation </span>
+              <svg class="flex-shrink-0 -mr-1 ml-1 h-5 w-5 text-gray-400 group-hover:text-gray-500" x-description="Heroicon name: solid/chevron-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+              </svg>
+            </button>
+          </div>
+
+          <div class="relative flex items-center" data-controller="loading">
+            <%= link_to "Clear", "#", class: 'text-gray-500 text-xs' %>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="flow-root">
+    <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+        <table class="min-w-full divide-y divide-gray-300 animate-pulse">
+          <thead>
+            <tr>
+              <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Image</th>
+              <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Name</th>
+              <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Species</th>
+              <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Homeworld</th>
+              <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Affiliation</th>
+              <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <% 5.times do %>
+              <tr>
+                <% 6.times do %>
+                  <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
+                    <div class="h-3 bg-gray-100 rounded w-full"></div>
+                  </td>
+                <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+

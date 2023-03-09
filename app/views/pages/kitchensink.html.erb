@@ -100,6 +100,14 @@
   <div class="mx-auto my-20 flex items-center justify-center max-w-lg">
     <%= turbo_frame_tag "markdown_preview", src: new_post_path, class: "w-full" %>
   </div>
+
+  <%= render "shared/divider", title: "Day 19/30 - Pulse" %>
+
+  <div class="mx-auto my-20 flex items-center justify-center">
+    <%= turbo_frame_tag "slow_characters", src: slow_characters_path, class: "w-full" do %>
+      <%= render 'slow_characters/loading_index' %>
+    <% end %>
+  </div>
 </div>
 
 

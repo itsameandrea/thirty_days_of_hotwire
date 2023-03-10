@@ -108,6 +108,12 @@
       <%= render 'slow_characters/loading_index' %>
     <% end %>
   </div>
+
+  <%= render "shared/divider", title: "Day 20/30 - Dynamic select inputs" %>
+
+  <div class="mx-auto my-20 flex items-start justify-center max-w-lg min-h-[500px]">
+    <%= turbo_frame_tag "dynamic_select_inputs", src: profiles_path, class: "w-full" %>
+  </div>
 </div>
 
 

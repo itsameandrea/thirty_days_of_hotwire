@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_08_155409) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_10_161941) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -118,6 +118,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_155409) do
     t.index ["recipe_id"], name: "index_ingredients_on_recipe_id"
   end
 
+  create_table "jobs", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "messages", force: :cascade do |t|
     t.bigint "chatroom_id", null: false
     t.bigint "user_id", null: false
@@ -148,6 +154,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_155409) do
     t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "specializations", force: :cascade do |t|
+    t.string "name"
+    t.bigint "job_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["job_id"], name: "index_specializations_on_job_id"
   end
 
   create_table "technologies", force: :cascade do |t|
@@ -209,6 +223,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_155409) do
   add_foreign_key "ingredients", "recipes"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "specializations", "jobs"
   add_foreign_key "tic_tac_toe_moves", "tic_tac_toe_games"
   add_foreign_key "tic_tac_toe_moves", "users"
 end

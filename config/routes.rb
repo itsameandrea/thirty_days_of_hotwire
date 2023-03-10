@@ -43,4 +43,6 @@ Rails.application.routes.draw do
 
   resources :posts, only: %i[new create edit update show]
   resources :slow_characters, only: %i[index]
+
+  resources :profiles, only: %i[index]
 end

@@ -1,0 +1,24 @@
+<%= turbo_frame_tag "dynamic_select_inputs" do %>
+  <%= form_tag profiles_path, method: :get, data: { controller: "autosubmit" } do %>
+    <div class="flex space-x-10">
+      <div>
+        <%= label_tag :job, nil, class: "block text-sm font-medium leading-6 text-gray-900" %>
+        <%= select_tag :job,
+          options_from_collection_for_select(@jobs, "id", "name"),
+          data: { action: "change->autosubmit#submit", "turbo-permanent": true },
+          prompt: "Pick a job",
+          class: "mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
+      </div>
+
+      <div>
+        <%= label_tag :specialization, nil, class: "block text-sm font-medium leading-6 text-gray-900" %>
+        <%= select_tag :specialization,
+          options_from_collection_for_select(@specializations, "id", "name"),
+          disabled: @specializations.empty?,
+          prompt: "Pick a specialization",
+          class: "mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+

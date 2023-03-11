@@ -114,6 +114,12 @@
   <div class="mx-auto my-20 flex items-start justify-center max-w-lg min-h-[500px]">
     <%= turbo_frame_tag "dynamic_select_inputs", src: profiles_path, class: "w-full" %>
   </div>
+
+  <%= render "shared/divider", title: "Day 21/30 - Searchable dropdowns" %>
+
+  <div class="mx-auto my-20 flex items-start justify-center max-w-xl min-h-[500px]">
+    <%= turbo_frame_tag "searchable_dropdowns", src: pizzas_path, class: "w-full" %>
+  </div>
 </div>
 
 

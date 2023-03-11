@@ -45,4 +45,7 @@ Rails.application.routes.draw do
   resources :slow_characters, only: %i[index]
 
   resources :profiles, only: %i[index]
+
+  resources :pizzas, only: %i[index]
+  resources :toppings, only: %i[index]
 end

@@ -19,6 +19,9 @@ application.register("form-reset", FormResetController)
 import MapboxController from "./mapbox_controller"
 application.register("mapbox", MapboxController)
 
+import SearchableDropdownController from "./searchable_dropdown_controller"
+application.register("searchable-dropdown", SearchableDropdownController)
+
 import StreamAnimationsController from "./stream_animations_controller"
 application.register("stream-animations", StreamAnimationsController)
 

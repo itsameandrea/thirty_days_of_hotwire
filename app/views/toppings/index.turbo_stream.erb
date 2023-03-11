@@ -1,0 +1,6 @@
+<%= turbo_stream.update "topping_options" do %>
+  <% @toppings.each do |topping| %>
+    <%= render "pizzas/topping_option", topping: topping %>
+  <% end %>
+<% end %>
+

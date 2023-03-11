@@ -1,3 +1,4 @@
+<%= turbo_frame_tag "searchable_dropdowns" do %> 
   <%= form_tag pizzas_path, method: :get, class: "mb-20" do %>
     <div data-controller="dropdown">
       <%= label_tag :toppings, "Toppings", class: "block text-sm font-medium leading-6 text-gray-900" %>

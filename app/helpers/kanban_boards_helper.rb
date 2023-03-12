@@ -1,0 +1,2 @@
+module KanbanBoardsHelper
+end

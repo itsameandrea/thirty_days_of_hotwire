@@ -368,71 +368,82 @@
 
 # Job.create(jobs)
 
-toppings = [
-  { name: 'Mozzarella' },
-  { name: 'Tomatoes' },
-  { name: 'Basil' },
-  { name: 'Mushrooms' },
-  { name: 'Pepperoni' },
-  { name: 'Onions' },
-  { name: 'Garlic' },
-  { name: 'Parmesan' },
-  { name: 'Prosciutto' },
-  { name: 'Ricotta' },
-  { name: 'Artichokes' },
-  { name: 'Pesto' },
-  { name: 'Sausage' },
-  { name: 'Peppers' },
-  { name: 'Olives' },
-  { name: 'Anchovies' },
-  { name: 'Salami' },
-  { name: 'Capicola' },
-  { name: 'Burrata' },
-  { name: 'Gorgonzola' },
-  { name: 'Fennel sausage' },
-  { name: 'Eggplant' },
-  { name: 'Zucchini' },
-  { name: 'Broccoli rabe' },
-  { name: 'Pancetta' },
-  { name: 'Clams' },
-  { name: 'Mussels' },
-  { name: 'Taleggio' },
-  { name: 'Fontina' },
-  { name: 'Goat cheese' },
-  { name: 'Gruyere' },
-  { name: 'Caramelized onions' },
-  { name: 'Arugula' },
-  { name: 'Figs' },
-  { name: 'Truffle oil' },
-  { name: 'Bresaola' },
-  { name: 'Soppressata' },
-  { name: 'Sun-dried tomatoes' },
-  { name: 'Pine nuts' },
-  { name: 'Pancetta' },
-  { name: 'Asparagus' },
-  { name: 'Porcini mushrooms' },
-  { name: 'Balsamic glaze' },
-  { name: 'Capers' },
-  { name: 'Radicchio' },
-  { name: 'Gorgonzola dolce' },
-  { name: 'Pecorino' },
-  { name: 'Rapini' },
-  { name: 'Cherry tomatoes' },
-  { name: 'Speck' },
-  { name: 'Nduja' },
-  { name: 'Calabrian chili' }
-]
+# toppings = [
+#   { name: 'Mozzarella' },
+#   { name: 'Tomatoes' },
+#   { name: 'Basil' },
+#   { name: 'Mushrooms' },
+#   { name: 'Pepperoni' },
+#   { name: 'Onions' },
+#   { name: 'Garlic' },
+#   { name: 'Parmesan' },
+#   { name: 'Prosciutto' },
+#   { name: 'Ricotta' },
+#   { name: 'Artichokes' },
+#   { name: 'Pesto' },
+#   { name: 'Sausage' },
+#   { name: 'Peppers' },
+#   { name: 'Olives' },
+#   { name: 'Anchovies' },
+#   { name: 'Salami' },
+#   { name: 'Capicola' },
+#   { name: 'Burrata' },
+#   { name: 'Gorgonzola' },
+#   { name: 'Fennel sausage' },
+#   { name: 'Eggplant' },
+#   { name: 'Zucchini' },
+#   { name: 'Broccoli rabe' },
+#   { name: 'Pancetta' },
+#   { name: 'Clams' },
+#   { name: 'Mussels' },
+#   { name: 'Taleggio' },
+#   { name: 'Fontina' },
+#   { name: 'Goat cheese' },
+#   { name: 'Gruyere' },
+#   { name: 'Caramelized onions' },
+#   { name: 'Arugula' },
+#   { name: 'Figs' },
+#   { name: 'Truffle oil' },
+#   { name: 'Bresaola' },
+#   { name: 'Soppressata' },
+#   { name: 'Sun-dried tomatoes' },
+#   { name: 'Pine nuts' },
+#   { name: 'Pancetta' },
+#   { name: 'Asparagus' },
+#   { name: 'Porcini mushrooms' },
+#   { name: 'Balsamic glaze' },
+#   { name: 'Capers' },
+#   { name: 'Radicchio' },
+#   { name: 'Gorgonzola dolce' },
+#   { name: 'Pecorino' },
+#   { name: 'Rapini' },
+#   { name: 'Cherry tomatoes' },
+#   { name: 'Speck' },
+#   { name: 'Nduja' },
+#   { name: 'Calabrian chili' }
+# ]
 
-# Create toppings
-Topping.create!(toppings)
+# # Create toppings
+# Topping.create!(toppings)
 
-# Create pizzas
+# # Create pizzas
 
-20.times do
-  pizza = Pizza.create!(
-    name: Faker::Artist.name
-  )
+# 20.times do
+#   pizza = Pizza.create!(
+#     name: Faker::Artist.name
+#   )
 
-  # Add toppings to pizza
-  pizza.toppings << Topping.all.sample(rand(1..3))
-end
+#   # Add toppings to pizza
+#   pizza.toppings << Topping.all.sample(rand(1..3))
+# end
+
+board = KanbanBoard.create!(title: 'Mailclipper')
+
+todo = KanbanColumn.create!(title: 'To Do', kanban_board: board)
+KanbanColumn.create!(title: 'Doing', kanban_board: board)
+KanbanColumn.create!(title: 'Staging', kanban_board: board)
+KanbanColumn.create!(title: 'Done', kanban_board: board)
+
+KanbanCard.create!(title: 'Add public profiles', kanban_column: todo)
+KanbanCard.create!(title: 'Add bookmark notes', kanban_column: todo)
+KanbanCard.create!(title: 'Add chatgpt categorization', kanban_column: todo)

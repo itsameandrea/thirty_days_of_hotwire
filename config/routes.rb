@@ -48,4 +48,8 @@ Rails.application.routes.draw do
 
   resources :pizzas, only: %i[index]
   resources :toppings, only: %i[index]
+
+  resources :kanban_boards, only: %i[show]
+  resources :kanban_columns, only: %i[update]
+  resources :kanban_cards, only: %i[update]
 end

@@ -16,6 +16,9 @@ application.register("flash", FlashController)
 import FormResetController from "./form_reset_controller"
 application.register("form-reset", FormResetController)
 
+import KanbanController from "./kanban_controller"
+application.register("kanban", KanbanController)
+
 import MapboxController from "./mapbox_controller"
 application.register("mapbox", MapboxController)
 

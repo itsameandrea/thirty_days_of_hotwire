@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_11_190408) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_12_163044) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -122,6 +122,30 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_11_190408) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "kanban_boards", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "kanban_cards", force: :cascade do |t|
+    t.string "title"
+    t.integer "position"
+    t.bigint "kanban_column_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["kanban_column_id"], name: "index_kanban_cards_on_kanban_column_id"
+  end
+
+  create_table "kanban_columns", force: :cascade do |t|
+    t.string "title"
+    t.integer "position"
+    t.bigint "kanban_board_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["kanban_board_id"], name: "index_kanban_columns_on_kanban_board_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -242,6 +266,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_11_190408) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "favourite_technologies", "technologies"
   add_foreign_key "ingredients", "recipes"
+  add_foreign_key "kanban_cards", "kanban_columns"
+  add_foreign_key "kanban_columns", "kanban_boards"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
   add_foreign_key "pizza_toppings", "pizzas"

@@ -80,3 +80,5 @@ gem "ruby-openai", "~> 3.5"
 gem "redcarpet", "~> 3.6"
 
 gem "acts_as_list", "~> 1.1"
+
+gem "noticed", "~> 1.6"

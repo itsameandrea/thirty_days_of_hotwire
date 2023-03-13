@@ -1,0 +1,54 @@
+<%= turbo_frame_tag "user_notifications" do %>
+  <% if current_user %>
+    <%= turbo_stream_from "notifications_#{current_user.id}" %>
+  <% end %>
+
+  <nav class="bg-gray-800">
+    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+      <div class="relative flex h-16 items-center justify-between">
+        <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+          <div class="flex flex-shrink-0 items-center">
+            <img class="block h-8 w-auto lg:hidden" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
+            <img class="hidden h-8 w-auto lg:block" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
+          </div>
+        </div>
+        <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+          <div class="relative ml-3" data-controller="dropdown">
+            <button data-action="click->dropdown#toggle click@window->dropdown#hide" id="notifications_icon" type="button" class="rounded-full relative bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+              <span class="sr-only">View notifications</span>
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+              </svg>
+            </button>
+
+            <% if @user == current_user %>
+              <div data-dropdown-target="menu" id="notifications_list" class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                <% if @user.notifications.any? %>
+                  <div id="notifications">
+                    <% @user.notifications.each do |notification| %>
+                      <%= render "notifications/notification", notification: notification %>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="p-10">
+    <h1 class="text-xl font-bold"> <%= @user.username %> Profile </h1>
+
+    <% unless @user == current_user %>
+      <%= turbo_frame_tag "follow" do %>
+        <%= button_to "Follow #{@user.username}",
+          follows_path(followed_user_id: @user.id),
+          method: :post,
+          class: "bg-indigo-500 hover:bg-indigo-600 text-white p-3 rounded-lg mt-5" %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+

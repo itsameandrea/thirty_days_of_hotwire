@@ -8,7 +8,7 @@
   <%= render "shared/divider", title: "Day 2/30 - Online users and Day 3/30 Howtire animations" %>
 
   <div class="mx-auto max-w-2xl my-20">
-    <%= turbo_frame_tag "online_users_frame", src: online_users_path %>
+    <%# turbo_frame_tag "online_users_frame", src: online_users_path %>
   </div>
   
   <%= render "shared/divider", title: "Day 4/30 - JS-less modals" %>
@@ -125,6 +125,16 @@
 
   <div class="mx-auto my-20 flex items-start justify-center min-h-[500px]">
     <%= turbo_frame_tag "kanban", src: kanban_board_path(KanbanBoard.last), class: "w-full" %>
+  </div>
+
+  <%= render "shared/divider", title: "Day 22/30 - Real time notifications" %>
+
+  <div class="mx-auto my-20 flex items-start justify-center min-h-[500px]">
+    <% if current_user %>
+      <%= turbo_frame_tag "user_notifications", src: user_path(current_user), class: "w-full" %>
+    <% else %>
+      <%= link_to "Login", new_user_session_path %>
+    <% end %>
   </div>
 </div>
 

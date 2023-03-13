@@ -52,4 +52,7 @@ Rails.application.routes.draw do
   resources :kanban_boards, only: %i[show]
   resources :kanban_columns, only: %i[update]
   resources :kanban_cards, only: %i[update]
+  
+  resources :users, only: %i[show]
+  resources :follows, only: %i[create]
 end

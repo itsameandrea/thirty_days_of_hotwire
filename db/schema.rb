@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_12_163044) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_13_170500) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -109,6 +109,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_12_163044) do
     t.index ["technology_id"], name: "index_favourite_technologies_on_technology_id"
   end
 
+  create_table "follows", force: :cascade do |t|
+    t.bigint "follower_id", null: false
+    t.bigint "followed_user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followed_user_id"], name: "index_follows_on_followed_user_id"
+    t.index ["follower_id"], name: "index_follows_on_follower_id"
+  end
+
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
     t.string "quantity"
@@ -155,6 +164,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_12_163044) do
     t.datetime "updated_at", null: false
     t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string "recipient_type", null: false
+    t.bigint "recipient_id", null: false
+    t.string "type", null: false
+    t.jsonb "params"
+    t.datetime "read_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["read_at"], name: "index_notifications_on_read_at"
+    t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient"
   end
 
   create_table "pizza_toppings", force: :cascade do |t|
@@ -265,6 +286,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_12_163044) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "favourite_technologies", "technologies"
+  add_foreign_key "follows", "users", column: "followed_user_id"
+  add_foreign_key "follows", "users", column: "follower_id"
   add_foreign_key "ingredients", "recipes"
   add_foreign_key "kanban_cards", "kanban_columns"
   add_foreign_key "kanban_columns", "kanban_boards"

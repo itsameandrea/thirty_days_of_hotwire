@@ -1,0 +1,77 @@
+<%= turbo_frame_tag "bulk_select" do %>
+  <div class="px-4 sm:p-6 lg:p-8">
+    <div class="sm:flex sm:items-center">
+      <div class="sm:flex-auto">
+        <h1 class="text-base font-semibold leading-6 text-gray-900">Inbox</h1>
+      </div>
+    </div>
+    <div class="mt-8 flow-root">
+      <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+          <% if @emails.any? %>
+            <div class="relative">
+              <% if params[:select_all].present? %>
+                <div class="absolute top-0 right-0 left-14 justify-between flex h-12 items-center space-x-3 bg-red-100 pt-1 px-3 sm:left-12">
+                  <span></span>
+                  <div>
+                    <span>All <%= @count %> emails in your inbox have been selected.</span>
+                    <%= link_to "Clear selection", emails_path, class: "inline-flex items-center rounded bg-white px-2 py-1 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-white" %>
+                  </div>
+                  <div>
+                    <%= button_to emails_bulk_path(all: true), method: :delete, class: "inline-flex flex items-center items-center rounded bg-red-500 px-2 py-1 text-sm font-semibold text-white shadow-sm hover:bg-red-600 disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-white" do %>
+                      <span> Delete selected </span>
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 ml-3">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                      </svg>
+                    <% end %>
+                  </div>
+                </div>
+              <% elsif params[:select_page].present? %>
+                <div class="absolute top-0 left-14 flex h-12 items-center space-x-3 bg-white sm:left-12">
+                  <%= link_to "Select all #{@count} emails", emails_path(select_all: true), class: "inline-flex items-center rounded bg-white px-2 py-1 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-white" %>
+                </div>
+              <% end %>
+
+              <table class="min-w-full table-fixed divide-y divide-gray-300">
+                <thead>
+                  <tr>
+                    <th scope="col" class="relative px-7 sm:w-12 sm:px-6">
+                      <%= link_to emails_path(select_page: params[:select_page].present? ? nil : true), class: "absolute left-4 top-1/2 -mt-2" do %>
+                        <%= check_box_tag "select_page",
+                          false,
+                          params[:select_page].present? || params[:select_all].present?,
+                          class: "h-4 w-4 cursor-pointer rounded border-gray-300 text-indigo-600 focus:ring-indigo-600" %>
+                      <% end %>
+                    </th>
+                    <th scope="col" class="min-w-[12rem] py-3.5 pr-3 text-left text-sm font-semibold text-gray-900">Subject</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200 bg-white">
+                  <!-- Selected: "bg-gray-50" -->
+                  <% @emails.each do |email| %>
+                    <tr>
+                      <td class="relative px-7 sm:w-12 sm:px-6">
+                        <%= check_box_tag "selected[]",
+                          false,
+                          params[:selected]&.include?(email.id.to_s) || params[:select_all].present? || params[:select_page].present?,
+                          class: "absolute left-4 top-1/2 -mt-2 h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600" %>
+                      </td>
+                      
+                      <td class="whitespace-nowrap py-4 pr-3 text-sm font-medium text-gray-900"><%= email.subject_line %></td>
+                    </tr>
+                  <% end %>
+
+                  <!-- More people... -->
+                </tbody>
+              </table>
+            </div>
+          <% else %>
+            <div class="text-center min-h-[300px] flex flex-col items-center justify-center">
+              <h3 class="mt-2 text-2xl font-semibold text-gray-900">Inbox zero! 🎉 🥳</h3>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

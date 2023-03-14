@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'emails/index'
   root 'pages#kitchensink'
   
   resources :tweets
@@ -55,4 +56,11 @@ Rails.application.routes.draw do
   
   resources :users, only: %i[show]
   resources :follows, only: %i[create]
+  
+  resources :emails, only: %i[index]
+  namespace :emails do
+    resource :bulk, only: :destroy, controller: :bulk
+  end
 end
+
+

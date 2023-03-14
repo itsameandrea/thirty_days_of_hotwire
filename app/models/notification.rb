@@ -6,7 +6,7 @@ class Notification < ApplicationRecord
 
   def broadcast_to_recipient
     broadcast_append_to(
-      "notifications_#{recipient.id}"
+      "notifications_#{recipient.id}",
       target: "notifications_list",
       partial: "notifications/notification",
       locals: {

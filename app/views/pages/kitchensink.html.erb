@@ -121,13 +121,13 @@
     <%= turbo_frame_tag "searchable_dropdowns", src: pizzas_path, class: "w-full" %>
   </div>
 
-  <%= render "shared/divider", title: "Day 21/30 - Sortable Kanban" %>
+  <%= render "shared/divider", title: "Day 22/30 - Sortable Kanban" %>
 
   <div class="mx-auto my-20 flex items-start justify-center min-h-[500px]">
     <%= turbo_frame_tag "kanban", src: kanban_board_path(KanbanBoard.last), class: "w-full" %>
   </div>
 
-  <%= render "shared/divider", title: "Day 22/30 - Real time notifications" %>
+  <%= render "shared/divider", title: "Day 23/30 - Real time notifications" %>
 
   <div class="mx-auto my-20 flex items-start justify-center min-h-[500px]">
     <% if current_user %>
@@ -135,6 +135,12 @@
     <% else %>
       <%= link_to "Login", new_user_session_path %>
     <% end %>
+  </div>
+
+  <%= render "shared/divider", title: "Day 24/30 - Gmail style bulk selection" %>
+
+  <div class="mx-auto my-20 flex items-start justify-center min-h-[500px]">
+    <%= turbo_frame_tag "bulk_select", src: emails_path, class: "w-full" %>
   </div>
 </div>
 

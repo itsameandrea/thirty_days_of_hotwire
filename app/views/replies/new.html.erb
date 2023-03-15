@@ -1,0 +1,13 @@
+<%= turbo_frame_tag "#{dom_id(@parent)}_reply", class: "w-full" do %>
+  <%= form_with model: @comment, url: comment_replies_path(@parent), class: "mt-6 " do |f| %>
+    <div class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200">
+      <%= f.label "Your comment", :content, class: "sr-only" %>
+      <%= f.text_area :content,
+        rows: 6,
+        placeholder: "Write a comment...",
+        class: "px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none" %>
+    </div>
+
+    <%= f.submit "Add reply", class: "inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-indigo-600 rounded-lg cursor-pointer hover:bg-indigo-700" %>
+  <% end %>
+<% end %>

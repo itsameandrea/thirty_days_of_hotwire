@@ -6,5 +6,3 @@ class EmailsController < ApplicationController
     @count = Email.count
   end
 end
-
-

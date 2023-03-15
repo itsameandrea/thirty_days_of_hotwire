@@ -1,0 +1,18 @@
+<%= turbo_frame_tag "nested_comments" do %>
+  <section class="bg-white py-8 lg:py-16">
+    <div class="max-w-2xl mx-auto px-4">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-lg lg:text-2xl font-bold text-gray-900">Discussion (<span id="comments_count"><%= @count %></span>)</h2>
+      </div>
+
+      <%= turbo_frame_tag "new_comment", src: new_comment_path %>
+
+      <div id="comments">
+        <% @comments.each do |comment| %>
+          <%= turbo_frame_tag dom_id(comment), loading: :lazy, src: comment_path(comment) %>
+        <% end %>
+      </div>
+    </div>
+  </section>
+<% end %>
+

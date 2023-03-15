@@ -1,0 +1,8 @@
+<%= turbo_stream.update "comments_count", html: Comment.count %>
+
+<%= turbo_stream.replace "#{dom_id(@comment.parent)}_reply" do %>
+  <%= turbo_frame_tag "#{dom_id(@comment.parent)}_reply", class: "w-full" %>
+  <%= render "comments/comment", comment: @comment %>
+<% end %>
+
+

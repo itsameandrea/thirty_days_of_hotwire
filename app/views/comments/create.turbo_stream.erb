@@ -1,0 +1,9 @@
+<%= turbo_stream.update "comments_count", html: Comment.count %>
+
+<%= turbo_stream.update "new_comment",
+  partial: "comments/form",
+  locals: { comment: Comment.new }  %>
+
+<%= turbo_stream.prepend "comments",
+  partial: "comments/comment",
+  locals: { comment: @comment } %>

@@ -8,5 +8,12 @@ module.exports = {
   ],
   plugins: [
     require('@tailwindcss/forms'),
-  ]
+  ],
+  purge: {
+    safelist: [
+      {pattern: /p-./},
+      {pattern:  /pl-./},
+      {pattern: /pt-./}
+    ],
+  }
 }

@@ -142,6 +142,12 @@
   <div class="mx-auto my-20 flex items-start justify-center min-h-[500px]">
     <%= turbo_frame_tag "bulk_select", src: emails_path, class: "w-full" %>
   </div>
+
+  <%= render "shared/divider", title: "Day 25/30 - Reddit-style nested comments" %>
+
+  <div class="mx-auto my-20 flex items-start justify-center min-h-[500px]">
+    <%= turbo_frame_tag "nested_comments", src: comments_path, class: "w-full" %>
+  </div>
 </div>
 
 

@@ -448,8 +448,35 @@
 # KanbanCard.create!(title: 'Add bookmark notes', kanban_column: todo)
 # KanbanCard.create!(title: 'Add chatgpt categorization', kanban_column: todo)
 
-100.times do
-  Email.create(
-    subject_line: Faker::Quote.famous_last_words
-  )
+# 100.times do
+#   Email.create(
+#     subject_line: Faker::Quote.famous_last_words
+#   )
+# end
+
+comments = [
+  "I'm really impressed by how Hotwire has simplified my Rails development workflow.",
+  "Hotwire has been a game changer for me! I love how easy it is to integrate with Rails.",
+  "I'm a big fan of using Hotwire in my Rails apps. It makes my code more efficient and my app more responsive.",
+  "Hotwire has been a great addition to my Rails toolkit. I highly recommend giving it a try!",
+  "Using Hotwire in my Rails projects has been a real time-saver. It's made my development process much smoother.",
+  "I've been really enjoying using Hotwire with Rails. It's a powerful combination that makes building apps faster and easier.",
+  "If you're building a Rails app, I highly recommend checking out Hotwire. It's made my life so much easier!",
+  "Hotwire is a must-have tool for any Rails developer. It's made my code more efficient and my app more responsive.",
+  "I've been blown away by the power of Hotwire in my Rails projects. It's revolutionized the way I build apps.",
+  "Hotwire is an amazing tool for building responsive, fast Rails apps. I'm so glad I started using it!",
+  "I'm so glad I started using Hotwire in my Rails projects. It's made my development process much smoother and more efficient.",
+  "Hotwire has been a real game changer for me. It's made my Rails development process much faster and more enjoyable.",
+  "If you're not using Hotwire with Rails, you're missing out! It's an amazing combination that will take your app to the next level.",
+  "I can't recommend Hotwire enough for Rails developers. It's made my code more efficient and my app more responsive.",
+  "Hotwire is a must-have tool for any Rails developer. It's made building apps faster, easier, and more fun!",
+  "I've been really impressed by the power of Hotwire in my Rails projects. It's a real game changer.",
+  "Hotwire has been a huge help in my Rails development process. It's made my code more efficient and my app more responsive.",
+  "If you're looking for a way to make your Rails app more responsive and efficient, look no further than Hotwire!",
+  "I'm so glad I discovered Hotwire for my Rails projects. It's made my development process much smoother and more efficient.",
+  "Hotwire is an amazing tool for building fast, responsive Rails apps. It's a must-have for any Rails developer!",
+]
+
+comments.each do |comment|
+  Comment.create!(content: comment)
 end

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'multiple_select', to: 'pages#multiple_select'
   get 'online_users', to: 'pages#online_users'
   get 'modal', to: 'pages#modal'
+  get 'landing_page', to: 'pages#landing_page'
   
   resources :technologies, only: [:create]
   resources :favourite_technologies, only: [:create, :destroy]

@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import AnimateScrollController from "./animate_scroll_controller"
+application.register("animate-scroll", AnimateScrollController)
+
 import AutosubmitController from "./autosubmit_controller"
 application.register("autosubmit", AutosubmitController)
 

@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  layout :resolve_layout
+
   def kitchensink
   end
 
@@ -27,5 +29,19 @@ class PagesController < ApplicationController
   end
 
   def notifications_tab
+  end
+
+  def landing_page
+  end
+
+  private
+
+  def resolve_layout
+    case action_name
+    when "landing_page"
+      "landing"
+    else
+      "application"
+    end
   end
 end

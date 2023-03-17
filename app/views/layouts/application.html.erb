@@ -14,15 +14,14 @@
     <%# <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" /> %>
   </head>
 
-  <body
-    data-controller="command-palette"
-    data-action="keydown.ctrl+a->command-palette#toggle keydown.esc->command-palette#close">
+  <body data-controller="command-palette turbo-confirm" data-action="keydown.ctrl+a->command-palette#toggle keydown.esc->command-palette#close">
     <%= render 'shared/flash' %>
     
     <%= yield %>
 
     <%= render 'shared/command_palette' %>
-
+    <%= render "shared/turbo_destroy_dialog" %>
+    
     <%= turbo_frame_tag "modal" %>
     <%= turbo_frame_tag "flash" %>
   </body>

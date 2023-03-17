@@ -2,6 +2,8 @@
   "name": "app",
   "private": "true",
   "dependencies": {
+    "@fullcalendar/core": "^6.1.4",
+    "@fullcalendar/daygrid": "^6.1.4",
     "@hotwired/stimulus": "^3.2.1",
     "@hotwired/turbo-rails": "^7.2.5",
     "@rails/actiontext": "^7.0.4-2",

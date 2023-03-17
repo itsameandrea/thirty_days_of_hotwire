@@ -10,6 +10,9 @@ application.register("animate-scroll", AnimateScrollController)
 import AutosubmitController from "./autosubmit_controller"
 application.register("autosubmit", AutosubmitController)
 
+import CalendarController from "./calendar_controller"
+application.register("calendar", CalendarController)
+
 import CommandPaletteController from "./command_palette_controller"
 application.register("command-palette", CommandPaletteController)
 

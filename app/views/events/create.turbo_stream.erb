@@ -1,0 +1,3 @@
+<%= turbo_stream.update "new_event", partial: "events/form", locals: { event: Event.new } %>
+<%= turbo_stream.append "events", partial: "events/event", locals: { event: @event } %>
+

@@ -5,9 +5,9 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 
 // Connects to data-controller="calendar"
 export default class extends Controller {
-  static targets = ["calendar"]
+  static targets = ["calendar", "event"]
   
-  connect() {
+  initialize() {
     this.setupCalendar()
   }
 
@@ -20,5 +20,21 @@ export default class extends Controller {
         center: 'title'
       }
     })
+
+    this.calendar.render()
+  }
+
+  eventTargetConnected(event) {
+    const { id, title, startingAt: start } = event.dataset
+
+    if (this.calendar) {
+      const event = {
+        id,
+        title,
+        start: new Date(start),
+      }
+
+      this.calendar.addEvent(event)
+    }
   }
 }

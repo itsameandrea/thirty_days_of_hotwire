@@ -154,6 +154,12 @@
   <div class="mx-auto my-20 flex items-start justify-center min-h-[500px]">
     <%= link_to "Animate Scroll", landing_page_path, class: "bg-indigo-600 text-white p-3 rounded-lg" %>
   </div>
+
+  <%= render "shared/divider", title: "Day 27/30 - Calendar" %>
+
+  <div class="mx-auto my-20 flex items-start justify-center min-h-[500px]">
+    <%= turbo_frame_tag "calendar_callbacks", src: events_path, class: "w-full" %>
+  </div>
 </div>
 
 

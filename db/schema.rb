@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_14_164609) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_17_045204) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -116,6 +116,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_14_164609) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "events", force: :cascade do |t|
+    t.string "title"
+    t.datetime "starting_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "favourite_technologies", force: :cascade do |t|
     t.bigint "technology_id", null: false
     t.datetime "created_at", null: false
@@ -190,6 +197,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_14_164609) do
     t.datetime "updated_at", null: false
     t.index ["read_at"], name: "index_notifications_on_read_at"
     t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient"
+  end
+
+  create_table "pets", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "pizza_toppings", force: :cascade do |t|

@@ -1,0 +1,20 @@
+<%= turbo_frame_tag "calendar_callbacks" do %>
+  <div class="flex p-6" data-controller="calendar">
+    <div class="w-2/3">
+      <div data-calendar-target="calendar"></div>
+    </div>
+    <div class="w-1/3 px-6">
+      <h3 class="text-xl font-bold">Events</h3>
+
+      <%= turbo_frame_tag "new_event", src: new_event_path %>
+
+      <hr class="my-6">
+
+      <ul id="events">
+        <% @events.each do |event| %>
+          <%= render event %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

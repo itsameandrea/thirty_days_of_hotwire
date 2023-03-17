@@ -66,4 +66,6 @@ Rails.application.routes.draw do
   resources :comments, only: %i[index new create show] do
     resources :replies, only: %i[new create]
   end
+
+  resources :events, only: %i[index new create]
 end

@@ -37,5 +37,8 @@ application.register("stream-animations", StreamAnimationsController)
 import StreamsController from "./streams_controller"
 application.register("streams", StreamsController)
 
+import TurboConfirmController from "./turbo_confirm_controller"
+application.register("turbo-confirm", TurboConfirmController)
+
 import UndoController from "./undo_controller"
 application.register("undo", UndoController)

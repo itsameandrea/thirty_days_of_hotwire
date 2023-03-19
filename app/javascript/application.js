@@ -23,13 +23,10 @@ Turbo.setConfirmMethod((message, element) => {
     dialog.querySelector('[data-confirm]').classList.add('hidden')
   }
 
-  dialog.classList.remove('hidden')
-
   dialog.showModal()
 
   return new Promise((resolve, reject) => {
     dialog.addEventListener("close", () => {
-      dialog.classList.add('hidden')
       resolve(dialog.returnValue === "confirm")
     }, { once: true })
   })

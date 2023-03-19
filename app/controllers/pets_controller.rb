@@ -13,8 +13,8 @@ class PetsController < ApplicationController
     end
   end
 
-  def show
-    @pet = Pet.find(params[:id])
+  def index
+    @pets = Pet.all
   end
   
   private

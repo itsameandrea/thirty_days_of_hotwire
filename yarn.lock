@@ -133,6 +133,13 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.17.8.tgz#200a0965cf654ac28b971358ecdca9cc5b44c335"
   integrity sha512-1iuezdyDNngPnz8rLRDO2C/ZZ/emJLb72OsZeqQ6gL6Avko/XCXZw+NuxBSNhBAP13Hie418V7VMt9et1FMvpg==
 
+"@excid3/uppy-activestorage-upload@https://github.com/excid3/uppy-activestorage-upload":
+  version "1.0.0"
+  resolved "https://github.com/excid3/uppy-activestorage-upload#76587991c88f4d78e0ed8150c2ad685e496744b0"
+  dependencies:
+    "@paralleldrive/cuid2" "^2.0.1"
+    np "^7.6.3"
+
 "@fullcalendar/core@^6.1.4":
   version "6.1.4"
   resolved "https://registry.yarnpkg.com/@fullcalendar/core/-/core-6.1.4.tgz#bfc67bf4ad0c8d99a7e1258b24b5b241c6f48ed1"
@@ -144,12 +151,6 @@
   version "6.1.4"
   resolved "https://registry.yarnpkg.com/@fullcalendar/daygrid/-/daygrid-6.1.4.tgz#fe1335eaa7a4e60ee4b0e6b3896b32398fac6c2c"
   integrity sha512-X0QWEiA/hT8GYiQzmXt9DlZTWaQbNtBHBXGtaMNcVXbGHDCzLoWTHrde/jABGfr/i2+d9sLUO4oTtwz2HVpNtQ==
-"@excid3/uppy-activestorage-upload@https://github.com/excid3/uppy-activestorage-upload":
-  version "1.0.0"
-  resolved "https://github.com/excid3/uppy-activestorage-upload#76587991c88f4d78e0ed8150c2ad685e496744b0"
-  dependencies:
-    "@paralleldrive/cuid2" "^2.0.1"
-    np "^7.6.3"
 
 "@hotwired/stimulus@>=3.0.0", "@hotwired/stimulus@^3.2.1":
   version "3.2.1"
@@ -2652,11 +2653,7 @@ potpack@^2.0.0:
   resolved "https://registry.yarnpkg.com/potpack/-/potpack-2.0.0.tgz#61f4dd2dc4b3d5e996e3698c0ec9426d0e169104"
   integrity sha512-Q+/tYsFU9r7xoOJ+y/ZTtdVQwTWfzjbiXBDMM/JKUux3+QPP02iUuIoeBQ+Ot6oEDlC+/PGjB/5A3K7KKb7hcw==
 
-<<<<<<< HEAD
-preact@^10.0.5:
-=======
-preact@^10.5.13:
->>>>>>> dc6aae5 (Uppy)
+preact@^10.0.5, preact@^10.5.13:
   version "10.13.1"
   resolved "https://registry.yarnpkg.com/preact/-/preact-10.13.1.tgz#d220bd8771b8fa197680d4917f3cefc5eed88720"
   integrity sha512-KyoXVDU5OqTpG9LXlB3+y639JAGzl8JSBXLn1J9HTSB3gbKcuInga7bZnXLlxmK94ntTs1EFeZp0lrja2AuBYQ==

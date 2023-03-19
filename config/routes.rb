@@ -67,5 +67,5 @@ Rails.application.routes.draw do
   end
 
   resources :events, only: %i[index new create]
-  resources :pets, only: %i[new create show]
+  resources :pets, only: %i[new create index]
 end

@@ -1,0 +1,33 @@
+<%= turbo_frame_tag "pets" do %>
+  <%= form_with model: @pet, class: "space-y-6 p-10" do |f| %>
+    <div>
+      <%= f.label :name, class: "block text-sm font-medium leading-6 text-gray-900" %>
+      <div class="mt-2">
+        <%= f.text_field :name, class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6", placeholder: "Mr. Pepperoni" %>
+      </div>
+    </div>
+    
+    <div
+      data-controller="uppy"
+      data-uppy-direct-upload-url-value="<%= rails_direct_uploads_path %>">
+      <%= f.label :photo, class: "block text-sm font-medium leading-6 text-gray-900 sm:pt-1.5" %>
+      <div class="mt-2 sm:col-span-2 sm:mt-0">
+        <div data-uppy-target="dropzone">
+          <div data-uppy-target="progressBar"></div>
+        </div>
+
+        <div class="mt-6" data-uppy-target="uploadedFiles">
+          <template data-uppy-target="preview">
+            <img src="#" class="w-20 h-20 object-cover rounded">
+          </template>
+
+          <template data-uppy-target="input">
+            <%= f.hidden_field :photo %>
+          </template>
+        </div>
+      </div>
+    </div>
+
+    <%= f.submit "Add Pet", class: "bg-indigo-600 rounded text-white hover:bg-indigo-700 p-2 w-full" %>
+  <% end %>
+<% end %>

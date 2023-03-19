@@ -42,3 +42,6 @@ application.register("turbo-confirm", TurboConfirmController)
 
 import UndoController from "./undo_controller"
 application.register("undo", UndoController)
+
+import UppyController from "./uppy_controller"
+application.register("uppy", UppyController)

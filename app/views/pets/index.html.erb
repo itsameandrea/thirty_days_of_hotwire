@@ -1,0 +1,37 @@
+<%= turbo_frame_tag "pets", class: "w-full" do %>
+  <div class="px-4 sm:px-6 lg:px-8 py-8">
+    <div class="sm:flex sm:items-center">
+      <div class="flex w-full justify-between">
+        <h1 class="text-base font-semibold leading-6 text-gray-900">Cute pets 🐶</h1>
+        <%= link_to "Add Pet", new_pet_path, class: "bg-indigo-600 text-white py-2 px-3 rounded" %>
+      </div>
+    </div>
+
+    <div class="flow-root">
+      <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+          <table class="min-w-full divide-y divide-gray-300">
+            <thead>
+              <tr>
+                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Photo</th>
+                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Name</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+              <% @pets.each do |pet| %>
+                <tr>
+                  <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
+                    <%= image_tag pet.photo, class: "inline-block h-14 w-14 rounded-md object-cover" %>
+                  </td>
+                  <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
+                    <%= pet.name %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'replies/new'
   root 'pages#kitchensink'
   
   resources :tweets
@@ -68,4 +67,5 @@ Rails.application.routes.draw do
   end
 
   resources :events, only: %i[index new create]
+  resources :pets, only: %i[new create index]
 end

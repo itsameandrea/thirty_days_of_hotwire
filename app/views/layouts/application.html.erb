@@ -12,6 +12,7 @@
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css' rel='stylesheet' />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uppy/3.6.1/uppy.min.css" integrity="sha512-tMKsEO8+Z50WwVRmWbB+pPC/sXSLtnVTo0UzGHqKTzZB8w+wtTfd7xHGyY1cVxVjDG8TxG8MGMl5aWLbttmauw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <%# <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" /> %>
+    <script src="https://beamanalytics.b-cdn.net/beam.min.js" data-token="<%= Rails.application.credentials.dig(:beam, :token) %>" async></script>
   </head>
 
   <body data-controller="command-palette turbo-confirm" data-action="keydown.ctrl+a->command-palette#toggle keydown.esc->command-palette#close">

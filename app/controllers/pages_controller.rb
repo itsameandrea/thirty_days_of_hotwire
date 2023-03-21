@@ -34,6 +34,15 @@ class PagesController < ApplicationController
   def landing_page
   end
 
+  def track_event
+    # some business logic event
+    # that we want to track
+    
+    respond_to do |format|
+      format.turbo_stream
+    end
+  end
+
   private
 
   def resolve_layout

@@ -172,6 +172,12 @@
   <div class="mx-auto my-20 flex items-start justify-center min-h-[500px]">
     <%= turbo_frame_tag "pets", src: pets_path, class: "w-full" %>
   </div>
+
+  <%= render "shared/divider", title: "Day 30/30 - Custom turbo stream actions" %>
+
+  <div class="mx-auto my-20 flex items-start justify-center">
+    <%= button_to "Track an Event", track_event_path, method: :post, class: "bg-indigo-600 text-white p-3 rounded-lg" %>
+  </div>
 </div>
 
 

@@ -1,19 +1,20 @@
 <%= turbo_frame_tag "places" do %>
-  <%= form_with model: @place, url: places_path, class: "mb-10" do |f| %>
-    <div>
-      <%= f.label :address, class: "block text-sm font-medium leading-6 text-gray-900" %>
-      <div class="mt-2">
-        <%= f.text_field :address, class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6", placeholder: "e.g. Colosseum" %>
-      </div>
-    </div>
-  <% end %>
+  <div data-controller="mapbox"
+       data-action="turbo:frame-render->mapbox#render"
+       data-mapbox-api-key-value="<%= Rails.application.credentials.dig(:mapbox, :api_key) %>">
+       <%= turbo_frame_tag "places-form" do %>
+         <%= form_with model: @place, url: places_path, class: "mb-10" do |f| %>
+           <div>
+             <%= f.label :address, class: "block text-sm font-medium leading-6 text-gray-900" %>
+             <div class="mt-2">
+               <%= f.text_field :address, class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6", placeholder: "e.g. Colosseum" %>
+             </div>
+           </div>
+         <% end %>
+         <div data-mapbox-target="markers" data-coordinates="<%= @places.map(&:as_marker).to_json %>" ></div>
+       <% end %>
 
-  <div
-    style="width: 100%; height: 500px;"
-    data-controller="mapbox"
-    data-mapbox-markers-value="<%= @places.map(&:as_marker).to_json %>"
-    data-mapbox-api-key-value="<%= Rails.application.credentials.dig(:mapbox, :api_key) %>">
+       <div data-mapbox-target="map" style="width: 100%; height: 500px;">
+       </div>
   </div>
 <% end %>
-
-

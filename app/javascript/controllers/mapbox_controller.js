@@ -5,25 +5,33 @@ import mapboxgl from "mapbox-gl"
 export default class extends Controller {
   static values = {
     apiKey: String,
-    markers: Array
   }
+
+  static targets = ["map", "markers"]
 
   initialize() {
     mapboxgl.accessToken = this.apiKeyValue
 
     this.map = new mapboxgl.Map({
-      container: this.element,
+      container: this.mapTarget,
       style: "mapbox://styles/mapbox/streets-v10"
     })
 
     this.map.addControl(new mapboxgl.NavigationControl())
+    this.render()
+  }
 
+  render() {
     this.#addMarkers()
     this.#centerMap()
   }
 
+  get coordinates() {
+    return JSON.parse(this.markersTarget.dataset.coordinates) || []
+  }
+
   #addMarkers() {
-    this.markersValue.forEach((marker) => {
+    this.coordinates.forEach((marker) => {
       new mapboxgl.Marker()
         .setLngLat([marker.lng, marker.lat])
         .addTo(this.map)
@@ -31,11 +39,11 @@ export default class extends Controller {
   }
 
   #centerMap() {
-    if (this.markersValue.length === 0) return
+    if (this.coordinates.length === 0) return
 
     const bounds = new mapboxgl.LngLatBounds()
 
-    this.markersValue.forEach((marker) => {
+    this.coordinates.forEach((marker) => {
       bounds.extend([marker.lng, marker.lat])
     })
 
